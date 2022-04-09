@@ -1,0 +1,95 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --backgroundColor: rgb(25, 24, 31);
+  --cell-size: 100px;
+  --mark-size: calc(var(--cell-size) * 0.9);
+}
+
+body {
+ background-color: var(--backgroundColor);
+}
+
+header {
+  text-align: center;
+  color: white;
+  font: 400 12pt 'Poppins', sans-serif;
+  margin: 64px 0px 64px 0px;
+}
+
+
+/* Hash */
+.board {
+  display: grid;
+  justify-content: center;
+  align-content: center;
+
+  grid-template-columns: repeat(3, auto);
+}
+
+/* Boxes Hash */
+.cell {
+width: 100px;
+height: 100px;
+
+display: flex;
+align-items: center;
+justify-content: center;
+
+border: 1px white solid;
+border-top: none;
+border-right: none;
+position: relative;
+}
+
+.cell:nth-child(3n + 1) {
+  border-left: none;
+}
+
+.cell:nth-child(n + 7) {
+  border-bottom: none;
+}
+
+/* Hash X */
+.cell.x::before,
+.cell.x::after {
+content: "";
+width: calc(var(--mark-size) * 0.15);
+height: var(--mark-size);
+background-color: white;
+position: absolute;
+}
+
+.cell.x::before {
+  transform: rotate(45deg);
+}
+
+.cell.x::after {
+  transform: rotate(-45deg);
+}
+
+/* Hash Ball */
+.cell.ball::before,
+.cell.ball::after {
+content: "";
+
+position: absolute;
+border-radius: 50%;
+}
+
+.cell.ball::before {
+  width: calc(var(--mark-size) * 0.9);
+  height: calc(var(--mark-size) * 0.9);
+  background-color: white;
+}
+
+.cell.ball::after {
+  width: calc(var(--mark-size) * 0.6);
+  height: calc(var(--mark-size) * 0.6);
+
+  background-color: var(--backgroundColor);
+}
