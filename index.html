@@ -16,14 +16,14 @@
     <title>Hash</title>
   </head>
   <body>
-    <main>
+    <main class="">
       <header>
         <h1>HASH</h1>
         <p>Teste</p>
       </header>
       <div class="board" id="board">
-        <div class="cell x"></div>
-        <div class="cell ball"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
         <div class="cell"></div>
         <div class="cell"></div>
         <div class="cell"></div>
@@ -33,11 +33,10 @@
         <div class="cell"></div>
       </div>
     </main>
-    <div class="game-end-mensage" id="gameEndMensage">
-      <div data-game-end-mensage></div>
-      <button id="restart">Restart</button>
+    <div class="game-end-message" id="gameEndElement">
+      <div data-game-end-mensage>O jogador X venceu.</div>
+      <button id="restartButton">Restart</button>
     </div>
-
-    <script src="./main.js"></script>
   </body>
+  <script src="./main.js"></script>
 </html>

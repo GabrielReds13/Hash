@@ -21,6 +21,10 @@ header {
   margin: 64px 0px 64px 0px;
 }
 
+main.end {
+  filter: blur(8px);
+  -webkit-filter:blur(8px) ;
+}
 
 /* Hash */
 .board {
@@ -40,6 +44,8 @@ display: flex;
 align-items: center;
 justify-content: center;
 
+cursor: pointer;
+
 border: 1px white solid;
 border-top: none;
 border-right: none;
@@ -54,42 +60,110 @@ position: relative;
   border-bottom: none;
 }
 
-/* Hash X */
+/* Hash X & Ball Ghost */
 .cell.x::before,
-.cell.x::after {
-content: "";
-width: calc(var(--mark-size) * 0.15);
-height: var(--mark-size);
-background-color: white;
-position: absolute;
+.cell.x::after,
+.cell.o::before,
+.cell.o::after {
+  background-color: white;
 }
 
+.board.x .cell:not(.x):not(.o):hover::before,
+.board.x .cell:not(.x):not(.o):hover::after,
+.board.o .cell:not(.x):not(.o):hover::before,
+.board.o .cell:not(.x):not(.o):hover::after {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Hash X */
+.board.x .cell:not(.x):not(.o):hover::before,
+.board.x .cell:not(.x):not(.o):hover::after,
+.cell.x::before,
+.cell.x::after {
+  content: "";
+  width: calc(var(--mark-size) * 0.15);
+  height: var(--mark-size);
+  position: absolute;
+}
+
+.board.x .cell:not(.x):not(.o):hover::before,
 .cell.x::before {
   transform: rotate(45deg);
 }
 
+.board.x .cell:not(.x):not(.o):hover::after,
 .cell.x::after {
   transform: rotate(-45deg);
 }
 
 /* Hash Ball */
-.cell.ball::before,
-.cell.ball::after {
+.board.o .cell:not(.x):not(.o):hover::before,
+.board.o .cell:not(.x):not(.o):hover::after,
+.cell.o::before,
+.cell.o::after {
 content: "";
 
 position: absolute;
 border-radius: 50%;
 }
 
-.cell.ball::before {
+.board.o .cell:not(.x):not(.o):hover::before,
+.cell.o::before {
   width: calc(var(--mark-size) * 0.9);
   height: calc(var(--mark-size) * 0.9);
-  background-color: white;
 }
 
-.cell.ball::after {
+.board.o .cell:not(.x):not(.o):hover::after,
+.cell.o::after {
   width: calc(var(--mark-size) * 0.6);
   height: calc(var(--mark-size) * 0.6);
 
   background-color: var(--backgroundColor);
+}
+
+/* Cursor */
+.cell.x,
+.cell.o {
+  cursor: not-allowed;
+}
+
+/* Game End Mensage */
+
+.game-end-message {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  background-color: rgba(255, 255, 255, 0.5);
+
+  display: none;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  font: 400 18pt 'Poppins', sans-serif;
+}
+
+.game-end-message button {
+  font-size: 14pt;
+  background-color: var(--backgroundColor);
+  color: white;
+  padding: 8px;
+  border: none;
+  border-radius: 15px;
+  margin: 8px;
+}
+
+button {
+  width: 150px;
+}
+
+.game-end-message button:hover {
+  filter: brightness(130%);
+}
+
+.game-end-message.show {
+  display: flex;
 }
