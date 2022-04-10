@@ -26,6 +26,18 @@ main.end {
   -webkit-filter:blur(8px) ;
 }
 
+/* Background Hash */
+div.board {
+  background-color: white;
+
+  width: 350px;
+  height: 350px;
+
+  border-radius: 15px;
+
+  margin: auto;
+}
+
 /* Hash */
 .board {
   display: grid;
@@ -46,7 +58,7 @@ justify-content: center;
 
 cursor: pointer;
 
-border: 1px white solid;
+border: 1px var(--backgroundColor) solid;
 border-top: none;
 border-right: none;
 position: relative;
@@ -65,14 +77,14 @@ position: relative;
 .cell.x::after,
 .cell.o::before,
 .cell.o::after {
-  background-color: white;
+  background-color: var(--backgroundColor);
 }
 
 .board.x .cell:not(.x):not(.o):hover::before,
 .board.x .cell:not(.x):not(.o):hover::after,
 .board.o .cell:not(.x):not(.o):hover::before,
 .board.o .cell:not(.x):not(.o):hover::after {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(25, 24, 31, 0.3);
 }
 
 /* Hash X */
@@ -118,7 +130,7 @@ border-radius: 50%;
   width: calc(var(--mark-size) * 0.6);
   height: calc(var(--mark-size) * 0.6);
 
-  background-color: var(--backgroundColor);
+  background-color: white;
 }
 
 /* Cursor */
